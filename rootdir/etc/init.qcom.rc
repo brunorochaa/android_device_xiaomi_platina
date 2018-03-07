@@ -501,7 +501,6 @@ on property:persist.debug.trace=1
     mkdir /data/core 0777 root root
     write /proc/sys/kernel/core_pattern "/data/core/%E.%p.%e"
 
-<<<<<<< HEAD
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
 
@@ -543,21 +542,15 @@ service qcom-c_core-sh  /vendor/bin/init.qcom.class_core.sh
     user root
     oneshot
 
-service qcom-c_main-sh /vendor/bin/init.class_main.sh
-=======
 service vendor.qcom-c_main-sh /vendor/bin/init.class_main.sh
->>>>>>> 2a63f2c... clover: rootdir: Add 'vendor.' prefix to a vendor HAL service name
     class main
     user root
     oneshot
 
 on property:vold.decrypt=trigger_restart_framework
-<<<<<<< HEAD
-    start qcom-c_main-sh
-    start wcnss-service
-=======
     start vendor.qcom-c_main-sh
->>>>>>> 2a63f2c... clover: rootdir: Add 'vendor.' prefix to a vendor HAL service name
+    start wcnss-service
+
 
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
@@ -566,6 +559,7 @@ service vendor.cnd /system/vendor/bin/cnd
     class main
     user system
     group system wifi inet radio wakelock net_admin
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.dpmQmiMgr /system/vendor/bin/dpmQmiMgr
     class main
@@ -576,6 +570,7 @@ service vendor.irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class core
     user root
     oneshot
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.rmt_storage /vendor/bin/rmt_storage
     class core
@@ -586,6 +581,7 @@ service vendor.rmt_storage /vendor/bin/rmt_storage
 service vendor.tftp_server /vendor/bin/tftp_server
    class core
    user root
+
 
 on property:wc_transport.start_hci=true
     start start_hci_filter
@@ -662,11 +658,12 @@ service vendor.qmuxd /system/vendor/bin/qmuxd
     group radio audio bluetooth gps nfc diag
     disabled
 
+
 service vendor.netmgrd /system/vendor/bin/netmgrd
     class main
     disabled
+    writepid /dev/cpuset/system-background/tasks
 
-<<<<<<< HEAD
 service ipacm-diag /system/vendor/bin/ipacm-diag
     class main
     user radio
@@ -674,26 +671,27 @@ service ipacm-diag /system/vendor/bin/ipacm-diag
     group radio diag oem_2901
     disabled
 
-service ipacm /system/vendor/bin/ipacm
-=======
 service vendor.ipacm /system/vendor/bin/ipacm
->>>>>>> 2a63f2c... clover: rootdir: Add 'vendor.' prefix to a vendor HAL service name
+
     class main
     user radio
     group radio inet
     disabled
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.qti /system/vendor/bin/qti
     class main
     user radio
     group radio oem_2901 diag usb net_admin
     disabled
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.sensors /vendor/bin/sensors.qcom
     class core
     user root
     group root
     disabled
+    writepid /dev/cpuset/system-background/tasks
 
 on property:ro.use_data_netmgrd=false
     # netmgr not supported on specific target
@@ -739,6 +737,7 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.wigig_supplicant /vendor/bin/hw/wpa_supplicant \
     -iwigig0 -Dnl80211 -c/data/vendor/wifi/wigig_supplicant.conf \
@@ -900,6 +899,7 @@ service vendor.cnss-daemon /system/vendor/bin/cnss-daemon -n -l
     user system
     group system inet net_admin wifi
     capabilities NET_ADMIN
+    writepid /dev/cpuset/system-background/tasks
 
 on property:sys.powerctl=*
     stop vendor.cnss-daemon
@@ -951,6 +951,7 @@ service vendor.loc_launcher /system/vendor/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
     group gps inet diag wifi
+    writepid /dev/cpuset/system-background/tasks
 
 on property:crypto.driver.load=1
      insmod /system/lib/modules/qce.ko
