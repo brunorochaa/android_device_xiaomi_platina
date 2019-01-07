@@ -68,7 +68,7 @@ static void init_setup_model_properties()
     if (buf.find("CN") != std::string::npos) {
         property_override_dual("ro.product.model", "ro.vendor.product.model", "MI 8 Lite");
     } else {
-        property_override_dual("ro.product.model", "ro.vendor.product.model",  "?MI 8 Lite");
+        property_override_dual("ro.product.model", "ro.vendor.product.model",  "MI 8 Lite");
     }
 }
 
