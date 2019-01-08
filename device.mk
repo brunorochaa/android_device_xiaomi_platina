@@ -26,10 +26,6 @@ $(call inherit-product, vendor/xiaomi/platina/platina-vendor.mk)
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
-
-PRODUCT_ENFORCE_RRO_TARGETS := \
-    framework-res
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -145,7 +141,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service \
     libxml2 \
-    Snap
+    GoogleCameraMod
 
 # CNE
 PRODUCT_PACKAGES += \
