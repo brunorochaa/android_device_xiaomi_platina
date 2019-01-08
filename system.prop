@@ -313,3 +313,8 @@ persist.env.fastdorm.enabled=true
 # enable new autobrightness algo
 sys.autobrightness_optimize=true
 
+#Try enable API2
+persist.camera.HAL3.enabled=1
+persist.vendor.camera.HAL3.enabled=1
+persist.camera.eis.enable=1
+
