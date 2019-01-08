@@ -446,5 +446,26 @@
     <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
                   autodetected from the Configuration. -->
     <bool name="config_showNavigationBar">true</bool>
+	
+	<!-- Below has a test overlays for ViperOS -->
+
+	<!-- Full screen aspect ratio -->
+    <bool name="config_haveHigherAspectRatioScreen">true</bool>
+    <item name="config_screenAspectRatio" format="float" type="dimen">2.1</item>
+
+	<!-- If true, the display will be shifted around in ambient mode. -->
+    <bool name="config_enableBurnInProtection">true</bool>
+
+	<!-- If true, the screen can be rotated via the accelerometer in all 4
+         rotations as the default behavior. -->
+    <bool name="config_allowAllRotations">true</bool>
+
+	<!-- Enables or disables fading edges when marquee is enabled in TextView.
+         Off by default, since the framebuffer readback used to implement the
+         fading edges is prohibitively expensive on most GPUs. -->
+    <bool name="config_ui_enableFadingMarquee">false</bool>
+	
+	<!-- Whether device has a notch -->
+    <bool name="config_haveNotch">true</bool>
 
 </resources>
